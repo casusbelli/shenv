@@ -25,8 +25,12 @@ git clone https://github.com/plasticboy/vim-markdown.git "${BUNDLE_DIR}/vim-mark
 # Install trailing-whitespace
 mkdir -p  "${BUNDLE_DIR}/trailing-whitespace"
 git clone http://github.com/bronson/vim-trailing-whitespace "${BUNDLE_DIR}/trailing-whitespace/"
+# Install python-mode
+mkdir -p  "${BUNDLE_DIR}/python-mode"
+git clone --recurse-submodules https://github.com/python-mode/python-mode "${BUNDLE_DIR}/python-mode/"
 echo "vim plugin installation done."
 
 # Install tmux configuration
 cp ./tmux.conf "${HOME}/.tmux.conf"
 
+echo "Installation complete. Ensure neovim, tmux and fish are installed in order to utilize these configs."
