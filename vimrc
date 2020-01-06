@@ -60,3 +60,11 @@ au FileType ruby   set softtabstop=2 tabstop=2 shiftwidth=2
 " Use Ag instead of Ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
+" syntastic configuration
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0

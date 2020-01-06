@@ -1,16 +1,23 @@
 #!/bin/sh
 
+BUNDLE_DIR="${HOME}/.config/nvim/bundle"
+
 # Enable VIM pathogen plugin manager for neovim
-mkdir -p ~/.config/nvim/autoload ~/.config/nvim/bundle
+mkdir -p ~/.config/nvim/autoload "$BUNDLE_DIR"
 wget "https://www.vim.org/scripts/download_script.php?src_id=16224" --output-document ~/.config/nvim/autoload/pathogen.vim
-rm "download_script.php?src_id=16224"
 
 # Install vimrc config file for neovim (nvim)
-#cp --no-clobber ./vimrc ~/.config/nvim/init.vim
 cp ./vimrc ~/.config/nvim/init.vim
 
+echo "Installing vim plugins..."
 # Install fugitive plugin
-mkdir -p  ~/.config/nvim/bundle/vim-fugitive
-git clone https://github.com/tpope/vim-fugitive ~/.config/nvim/bundle/vim-fugitive/
-ls -lah ~/.config/nvim/bundle/
+mkdir -p  "${BUNDLE_DIR}/vim-fugitive"
+git clone https://github.com/tpope/vim-fugitive "${BUNDLE_DIR}/vim-fugitive/"
+# Install syntastic plugin
+mkdir -p  "${BUNDLE_DIR}/syntastic"
+git clone --depth=1 https://github.com/vim-syntastic/syntastic.git "${BUNDLE_DIR}/syntastic/"
+echo "vim plugin installation done."
+
+# Install tmux configuration
+cp ./tmux.conf "${HOME}/.tmux.conf"
 
