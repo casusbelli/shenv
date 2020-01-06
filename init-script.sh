@@ -16,6 +16,15 @@ git clone https://github.com/tpope/vim-fugitive "${BUNDLE_DIR}/vim-fugitive/"
 # Install syntastic plugin
 mkdir -p  "${BUNDLE_DIR}/syntastic"
 git clone --depth=1 https://github.com/vim-syntastic/syntastic.git "${BUNDLE_DIR}/syntastic/"
+# Install vim-go (once centos provides neovim 3.2+)
+#mkdir -p  "${BUNDLE_DIR}/vim-go"
+#git clone https://github.com/fatih/vim-go.git "${BUNDLE_DIR}/vim-go/"
+# Install vim-markdown
+mkdir -p  "${BUNDLE_DIR}/vim-markdown"
+git clone https://github.com/plasticboy/vim-markdown.git "${BUNDLE_DIR}/vim-markdown/"
+# Install trailing-whitespace
+mkdir -p  "${BUNDLE_DIR}/trailing-whitespace"
+git clone http://github.com/bronson/vim-trailing-whitespace "${BUNDLE_DIR}/trailing-whitespace/"
 echo "vim plugin installation done."
 
 # Install tmux configuration
