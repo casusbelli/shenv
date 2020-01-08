@@ -72,3 +72,6 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 " Provide ALE configuration
 let g:airline#extensions#ale#enabled = 1
 
+" set colorscheme
+colorscheme beauty256
+

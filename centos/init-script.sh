@@ -1,9 +1,10 @@
 #!/bin/sh
 
 BUNDLE_DIR="${HOME}/.config/nvim/bundle"
+COLOR_DIR="${HOME}/.config/nvim/color"
 
 # Enable VIM pathogen plugin manager for neovim
-mkdir -p ~/.config/nvim/autoload "$BUNDLE_DIR"
+mkdir -p ~/.config/nvim/autoload "$BUNDLE_DIR" "$COLOR_DIR"
 wget "https://www.vim.org/scripts/download_script.php?src_id=16224" --output-document ~/.config/nvim/autoload/pathogen.vim
 
 # Install vimrc config file for neovim (nvim)
@@ -38,6 +39,9 @@ git clone https://github.com/vim-airline/vim-airline-themes "${BUNDLE_DIR}/vim-a
 # Install ale plugin
 mkdir -p  "${BUNDLE_DIR}/ale"
 git clone https://github.com/dense-analysis/ale "${BUNDLE_DIR}/ale/"
+# Install vim-colorschemes plugin
+mkdir -p  "${BUNDLE_DIR}/vim-colorschemes"
+git clone https://github.com/flazz/vim-colorschemes "${BUNDLE_DIR}/vim-colorschemes/"
 echo "vim plugin installation done."
 
 # Install tmux configuration
