@@ -28,9 +28,13 @@ git clone http://github.com/bronson/vim-trailing-whitespace "${BUNDLE_DIR}/trail
 # Install python-mode
 mkdir -p  "${BUNDLE_DIR}/python-mode"
 git clone --recurse-submodules https://github.com/python-mode/python-mode "${BUNDLE_DIR}/python-mode/"
-# Install youcompleteme
-mkdir -p  "${BUNDLE_DIR}/youcompleteme"
-git clone https://github.com/valloric/youcompleteme "${BUNDLE_DIR}/youcompleteme/"
+# Install youcompleteme, uncomment once compatible with centos current nvim package
+#mkdir -p  "${BUNDLE_DIR}/youcompleteme"
+#git clone https://github.com/valloric/youcompleteme "${BUNDLE_DIR}/youcompleteme/"
+# Install vim-airline and themes
+mkdir -p  "${BUNDLE_DIR}/vim-airline" "${BUNDLE_DIR}/vim-airline-themes"
+git clone https://github.com/bling/vim-airline "${BUNDLE_DIR}/vim-airline/"
+git clone https://github.com/vim-airline/vim-airline-themes "${BUNDLE_DIR}/vim-airline-themes/"
 echo "vim plugin installation done."
 
 # Install tmux configuration
