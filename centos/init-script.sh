@@ -28,6 +28,9 @@ git clone http://github.com/bronson/vim-trailing-whitespace "${BUNDLE_DIR}/trail
 # Install python-mode
 mkdir -p  "${BUNDLE_DIR}/python-mode"
 git clone --recurse-submodules https://github.com/python-mode/python-mode "${BUNDLE_DIR}/python-mode/"
+# Install youcompleteme
+mkdir -p  "${BUNDLE_DIR}/youcompleteme"
+git clone https://github.com/valloric/youcompleteme "${BUNDLE_DIR}/youcompleteme/"
 echo "vim plugin installation done."
 
 # Install tmux configuration
