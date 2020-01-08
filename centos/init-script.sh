@@ -14,8 +14,8 @@ echo "Installing vim plugins..."
 mkdir -p  "${BUNDLE_DIR}/vim-fugitive"
 git clone https://github.com/tpope/vim-fugitive "${BUNDLE_DIR}/vim-fugitive/"
 # Install syntastic plugin
-mkdir -p  "${BUNDLE_DIR}/syntastic"
-git clone --depth=1 https://github.com/vim-syntastic/syntastic.git "${BUNDLE_DIR}/syntastic/"
+#mkdir -p  "${BUNDLE_DIR}/syntastic"
+#git clone --depth=1 https://github.com/vim-syntastic/syntastic.git "${BUNDLE_DIR}/syntastic/"
 # Install vim-go (once centos provides neovim 3.2+)
 #mkdir -p  "${BUNDLE_DIR}/vim-go"
 #git clone https://github.com/fatih/vim-go.git "${BUNDLE_DIR}/vim-go/"
@@ -35,6 +35,9 @@ git clone --recurse-submodules https://github.com/python-mode/python-mode "${BUN
 mkdir -p  "${BUNDLE_DIR}/vim-airline" "${BUNDLE_DIR}/vim-airline-themes"
 git clone https://github.com/bling/vim-airline "${BUNDLE_DIR}/vim-airline/"
 git clone https://github.com/vim-airline/vim-airline-themes "${BUNDLE_DIR}/vim-airline-themes/"
+# Install ale plugin
+mkdir -p  "${BUNDLE_DIR}/ale"
+git clone https://github.com/dense-analysis/ale "${BUNDLE_DIR}/ale/"
 echo "vim plugin installation done."
 
 # Install tmux configuration
