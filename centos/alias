@@ -1,0 +1,6 @@
+# aliases
+alias vim='/usr/bin/nvim'
+alias rm='rm -i'
+alias open='gio open'
+alias k8s='/usr/bin/kubectl'
+

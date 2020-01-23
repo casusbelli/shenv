@@ -3,6 +3,11 @@
 BUNDLE_DIR="${HOME}/.config/nvim/bundle"
 COLOR_DIR="${HOME}/.config/nvim/color"
 
+# shell settings
+mkdir -p ~/.config/fish/
+cp ./config.fish ~/.config/fish/
+cp ./alias ~/.alias
+
 # Enable VIM pathogen plugin manager for neovim
 mkdir -p ~/.config/nvim/autoload "$BUNDLE_DIR" "$COLOR_DIR"
 wget "https://www.vim.org/scripts/download_script.php?src_id=16224" --output-document ~/.config/nvim/autoload/pathogen.vim
