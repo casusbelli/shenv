@@ -7,8 +7,6 @@ call pathogen#infect()
 syntax on
 filetype plugin indent on
 
-" Add line numbers
-set number
 set ruler
 set cursorline
 
