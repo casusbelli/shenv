@@ -71,5 +71,5 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:airline#extensions#ale#enabled = 1
 
 " set colorscheme
-colorscheme beauty256
+colorscheme molokai
 
