@@ -47,6 +47,21 @@ git clone https://github.com/dense-analysis/ale "${BUNDLE_DIR}/ale/"
 # Install vim-colorschemes plugin
 mkdir -p  "${BUNDLE_DIR}/vim-colorschemes"
 git clone https://github.com/flazz/vim-colorschemes "${BUNDLE_DIR}/vim-colorschemes/"
+# Install jedi-vim plugin
+mkdir -p  "${BUNDLE_DIR}/jedi-vim"
+git clone --recursive https://github.com/davidhalter/jedi-vim.git "${BUNDLE_DIR}/jedi-vim/"
+# Install nvim-yarp plugin
+mkdir -p  "${BUNDLE_DIR}/nvim-yarp"
+git clone https://github.com/roxma/nvim-yarp.git "${BUNDLE_DIR}/nvim-yarp/"
+# Install ncm2 plugin
+mkdir -p  "${BUNDLE_DIR}/ncm2"
+git clone https://github.com/ncm2/ncm2.git "${BUNDLE_DIR}/ncm2/"
+# Install ncm2-jedi plugin
+mkdir -p  "${BUNDLE_DIR}/ncm2-jedi"
+git clone https://github.com/hanspinckaers/ncm2-jedi.git "${BUNDLE_DIR}/ncm2-jedi/"
+# Install ncm2-bufword plugin
+mkdir -p  "${BUNDLE_DIR}/ncm2-bufword"
+git clone https://github.com/ncm2/ncm2-bufword.git "${BUNDLE_DIR}/ncm2-bufword/"
 echo "vim plugin installation done."
 
 # Install tmux configuration

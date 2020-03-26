@@ -73,3 +73,6 @@ let g:airline#extensions#ale#enabled = 1
 " set colorscheme
 colorscheme molokai
 
+" Add NCM2 based autocompletions
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
