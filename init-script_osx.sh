@@ -11,3 +11,10 @@ COLOR_DIR="${HOME}/.config/nvim/color"
 # shell settings
 mkdir -p ~/.config/fish/
 cp ./config.fish.osx ~/.config/fish/config.fish
+
+# tmux config file is OS X specific
+cp ./tmux.conf.osx "${HOME}/.tmux.conf"
+
+# Repoprt we're done here
+echo "OS X specific adaptions done."
+

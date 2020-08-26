@@ -1,5 +1,5 @@
 # fish shell config file
 
 alias vim='/usr/local/bin/nvim'
-alias rm='/usr/bin/rm -i'
+alias rm='/bin/rm -i'
 alias k8s='/usr/bin/kubectl'
