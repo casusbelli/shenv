@@ -3,4 +3,4 @@ alias vim='/usr/bin/nvim'
 alias rm='rm -i'
 alias open='gio open'
 alias k8s='/usr/bin/kubectl'
-
+alias gitpowerpull='git pull --all --tags --force && git submodule sync && git submodule update --init --recursive'
