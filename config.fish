@@ -6,3 +6,9 @@ alias open='gio open'
 alias k8s='/usr/bin/kubectl'
 alias ll='ls -lash'
 alias gitpowerpull='git pull --all --tags --force; and git submodule sync ; and git submodule update --init --recursive'
+
+if test -z (pgrep ssh-agent | string collect)
+    eval (ssh-agent -c)
+    set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+    set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+end
