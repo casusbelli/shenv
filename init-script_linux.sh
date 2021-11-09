@@ -10,7 +10,7 @@ cp ./alias ~/.alias
 
 # Enable VIM pathogen plugin manager for neovim
 mkdir -p ~/.config/nvim/autoload "$BUNDLE_DIR" "$COLOR_DIR"
-wget "https://www.vim.org/scripts/download_script.php?src_id=16224" --output-document ~/.config/nvim/autoload/pathogen.vim
+wget "https://tpo.pe/pathogen.vim" --output-document ~/.config/nvim/autoload/pathogen.vim
 
 # Install vimrc config file for neovim (nvim)
 cp ./vimrc ~/.config/nvim/init.vim

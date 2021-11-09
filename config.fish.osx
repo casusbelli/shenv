@@ -1,5 +1,7 @@
 # fish shell config file
 
-alias vim='/usr/local/bin/nvim'
+alias vim='/opt/homebrew/bin/nvim'
 alias rm='/bin/rm -i'
 alias k8s='/usr/bin/kubectl'
+
+fish_add_path /opt/homebrew/bin
