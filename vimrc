@@ -1,11 +1,12 @@
 
-" init pathogen vim package manager
-runtime ~/.config/nvim/bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
+" Pathogen load
+filetype off
 
-" Enable syntax highlighting
-syntax on
+call pathogen#infect()
+call pathogen#helptags()
+
 filetype plugin indent on
+syntax on
 
 set ruler
 set cursorline
