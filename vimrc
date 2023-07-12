@@ -80,3 +80,6 @@ colorscheme gruvbox
 " Add NCM2 based autocompletions
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
+
+" Do not use visual mode on mouse marking text but use classic behaviour
+set mouse=v
