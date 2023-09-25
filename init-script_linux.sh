@@ -62,6 +62,9 @@ git clone https://github.com/hanspinckaers/ncm2-jedi.git "${BUNDLE_DIR}/ncm2-jed
 # Install ncm2-bufword plugin
 mkdir -p  "${BUNDLE_DIR}/ncm2-bufword"
 git clone https://github.com/ncm2/ncm2-bufword.git "${BUNDLE_DIR}/ncm2-bufword/"
+# Install vim-hcl plugin
+mkdir -p  "${BUNDLE_DIR}/vim-hcl"
+git clone https://github.com/jvirtanen/vim-hcl.git "${BUNDLE_DIR}/vim-hcl/"
 echo "vim plugin installation done."
 
 # Install tmux configuration
