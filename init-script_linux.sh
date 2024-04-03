@@ -4,9 +4,12 @@ BUNDLE_DIR="${HOME}/.config/nvim/bundle"
 COLOR_DIR="${HOME}/.config/nvim/color"
 
 # shell settings
-mkdir -p ~/.config/fish/
+mkdir -p ~/.config/fish/conf.d
+mkdir -p ~/.config/fish/functions
 cp ./config.fish ~/.config/fish/
 cp ./alias ~/.alias
+cp ./fish-ssh-agent/fish-ssh-agent.fish ~/.config/fish/conf.d/
+cp ./fish-ssh-agent/__ssh_agent_is_started.fish ~/.config/fish/functions/
 
 # Enable VIM pathogen plugin manager for neovim
 mkdir -p ~/.config/nvim/autoload "$BUNDLE_DIR" "$COLOR_DIR"
