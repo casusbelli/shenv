@@ -3,5 +3,5 @@ if test -z "$SSH_ENV"
 end
 
 if not __ssh_agent_is_started
-    __ssh_agent_started
+    __ssh_agent_is_started
 end
