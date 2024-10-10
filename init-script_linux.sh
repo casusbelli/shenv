@@ -68,6 +68,9 @@ git clone https://github.com/ncm2/ncm2-bufword.git "${BUNDLE_DIR}/ncm2-bufword/"
 # Install vim-hcl plugin
 mkdir -p  "${BUNDLE_DIR}/vim-hcl"
 git clone https://github.com/jvirtanen/vim-hcl.git "${BUNDLE_DIR}/vim-hcl/"
+# Install vim-visual-multi
+mkdir -p  "${BUNDLE_DIR}/vim-visual-multi"
+git clone https://github.com/mg979/vim-visual-multi.git "${BUNDLE_DIR}/vim-visual-multi/"
 echo "vim plugin installation done."
 
 # Install tmux configuration

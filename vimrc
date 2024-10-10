@@ -83,3 +83,6 @@ set completeopt=noinsert,menuone,noselect
 
 " Do not use visual mode on mouse marking text but use classic behaviour
 set mouse=v
+
+" I use dark terminals with Linux
+set background=dark
