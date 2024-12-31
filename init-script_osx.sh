@@ -16,7 +16,7 @@ cp ./config.fish.osx ~/.config/fish/config.fish
 cp ./tmux.conf.osx "${HOME}/.tmux.conf"
 
 # I'm using light terminals, force nvim to use this
-echo "set background=light" > ~/.config/nvim/init.vim
+sed -i '' 's/^set background=dark/set background=light/g' ~/.config/nvim/init.vim
 
 # Repoprt we're done here
 echo "OS X specific adaptions done."
