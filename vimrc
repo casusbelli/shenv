@@ -1,29 +1,22 @@
 
 " Create Python 3 venv and install pynvim if it is not already installed.
-if empty('~/.config/nvim/venv')
-    execute '!python3 -m venv ' . '~/.config/nvim/venv'
-    execute '!~/.config/nvim/venv/bin/python3 -m pip install neovim'
-    execute '!~/.config/nvim/venv/bin/python3 -m pip install pynvim'
-endif
 let g:python3_host_prog='~/.config/nvim/venv/bin/python3'
 
 call plug#begin("~/.config/nvim/bundle")
 " List your plugins here
 
 Plug 'tpope/vim-sensible'
-"TODO(kaisers): switch to this theme once it's installation is clarified:
-"Plug 'ellisonleao/gruvbox.nvim'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-syntastic/syntastic'
 Plug 'fatih/vim-go'
 Plug 'plasticboy/vim-markdown'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'dense-analysis/ale'
-Plug 'echasnovski/mini.nvim'
 Plug 'jvirtanen/vim-hcl'
 Plug 'mg979/vim-visual-multi'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'davidhalter/jedi-vim'
 
 call plug#end()
 
@@ -78,15 +71,6 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " Use Ag instead of Ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-" syntastic configuration
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-
 " Provide ALE configuration
 let g:airline#extensions#ale#enabled = 1
 
@@ -98,3 +82,6 @@ set mouse=v
 
 " I use dark terminals with Linux
 set background=dark
+
+" Set space as mapleader key
+let mapleader="\<Space>"
