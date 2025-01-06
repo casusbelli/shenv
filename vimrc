@@ -13,10 +13,8 @@ Plug 'plasticboy/vim-markdown'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'dense-analysis/ale'
 Plug 'jvirtanen/vim-hcl'
-Plug 'mg979/vim-visual-multi'
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'davidhalter/jedi-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -73,6 +71,9 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " Provide ALE configuration
 let g:airline#extensions#ale#enabled = 1
+let g:ale_fixers = {'python': ['isort', 'remove_trailing_lines', 'trim_whitespace']}
+" Also we want to use other code completion systems instead of ale.
+let g:ale_completion_enabled = 0
 
 " set colorscheme
 colorscheme gruvbox
@@ -85,3 +86,6 @@ set background=dark
 
 " Set space as mapleader key
 let mapleader="\<Space>"
+
+" Set <cr> as coc completion key
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
