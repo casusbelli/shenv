@@ -24,6 +24,8 @@ deactivate
 # Install tmux configuration
 cp ./tmux.conf "${HOME}/.tmux.conf"
 
-# TODO(kaisers): Run PlugInstall in neovim from here, currently this needs to be done manually.
+echo "Running neovim plugin/package installations..."
+nvim -c "source ./setup_neovim.vim" ./vimrc
+echo "neovim plugin/package installation done."
 
-echo "Installation complete. Ensure neovim, tmux and fish are installed in order to utilize these configs."
+echo "Installation complete. Ensure tmux and fish are installed in order to utilize these configs."
