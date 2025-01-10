@@ -6,3 +6,4 @@ PlugInstall
 
 "Conqueror of Completion - install additional packages
 CocInstall coc-groovy
+CocInstall coc-java
