@@ -62,10 +62,6 @@ let g:go_fmt_command = "goimports"
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 au FileType ruby   set softtabstop=2 tabstop=2 shiftwidth=2
 
-" yaml should use spaces instead of tabs
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
-
 " Use Ag instead of Ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
 

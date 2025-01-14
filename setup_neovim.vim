@@ -5,4 +5,4 @@ PlugClean
 PlugInstall
 
 "Conqueror of Completion - install additional packages
-CocInstall coc-groovy coc-java
+CocInstall coc-groovy coc-java coc-yaml
