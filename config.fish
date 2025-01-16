@@ -13,4 +13,4 @@ if test -z (pgrep -x ssh-agent|tr -d '[:space:]')
     set -Ux SSH_AGENT_PID $SSH_AGENT_PID
 end
 
-set -U -x GIT_EDITORnvim
+set -U -x GIT_EDITOR nvim
