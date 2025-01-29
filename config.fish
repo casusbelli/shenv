@@ -14,3 +14,4 @@ if test -z (pgrep -x ssh-agent|tr -d '[:space:]')
 end
 
 set -U -x GIT_EDITOR nvim
+set -U -x EDITOR nvim
