@@ -6,5 +6,6 @@ alias ll='ls -lash'
 alias gitpowerpull='git pull --all --tags --force; and git submodule sync ; and git submodule update --init --recursive'
 
 fish_add_path /opt/homebrew/bin
+fish_add_path ~/Applications
 
 set -U -x GIT_EDITOR nvim
