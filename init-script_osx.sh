@@ -21,6 +21,6 @@ sed -i '' 's/^set background=dark/set background=light/g' ~/.config/nvim/init.vi
 # OS X path for fish differs from linux
 sed -i '' 's/\/usr\/local\/bin\/fish/\/opt\/homebrew\/bin\/fish/g' ~/.tmux.conf
 
-# Repoprt we're done here
+# Report we're done here
 echo "OS X specific adaptions done."
 
