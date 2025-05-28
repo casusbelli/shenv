@@ -77,8 +77,9 @@ colorscheme gruvbox
 " Do not use visual mode on mouse marking text but use classic behaviour
 set mouse=v
 
-" I use dark terminals with Linux
-set background=dark
+" I used to use dark terminals with Linux
+" set background=dark
+set background=light
 
 " Set space as mapleader key
 let mapleader="\<Space>"
