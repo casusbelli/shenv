@@ -31,4 +31,8 @@ echo "Running neovim plugin/package installations..."
 nvim -c "source ./setup_neovim.vim" ./vimrc
 echo "neovim plugin/package installation done."
 
+# Install user ruff config
+mkdir -p ~/.config/ruff/
+cp ./pyproject.toml ~/.config/ruff/pyproject.toml
+
 echo "Installation complete. Ensure tmux and fish are installed in order to utilize these configs."

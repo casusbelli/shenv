@@ -1,0 +1,20 @@
+[tool.ruff]
+lint.select = [
+    "E",  # PEP 8 style errors
+    "W",  # PEP 8 style warnings
+    "F",  # Syntax errors and undefined names
+    "B",  # Bugbear-specific warnings (potential bugs)
+    "A",  # Builtins
+    "C4", # Comprehension-related issues
+    "DTZ",# Datetime timezone
+    "EM", # Exception messages
+    "ICN",# Import conventions
+    "INP",# No print statements
+    "PIE",# PIE712 (misplaced bare except)
+]
+lint.ignore = [
+    # "E501",  # Line too long (you can handle this with a separate formatter like Black)
+]
+
+[tool.ruff.lint.per-file-ignores]
+# "__init__.py" = ["F401"]  # Ignore unused imports in __init__.py files
