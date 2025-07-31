@@ -8,6 +8,7 @@ lint.select = [
     "C4", # Comprehension-related issues
     "DTZ",# Datetime timezone
     "EM", # Exception messages
+    "I",   # isort
     "ICN",# Import conventions
     "INP",# No print statements
     "PIE",# PIE712 (misplaced bare except)
