@@ -15,6 +15,7 @@ Plug 'dense-analysis/ale'
 Plug 'jvirtanen/vim-hcl'
 Plug 'davidhalter/jedi-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'p00f/alabaster.nvim'
 
 call plug#end()
 
@@ -72,7 +73,9 @@ let g:ale_fixers = {'python': ['isort', 'remove_trailing_lines', 'trim_whitespac
 let g:ale_completion_enabled = 0
 
 " set colorscheme
-colorscheme gruvbox
+" colorscheme gruvbox
+set termguicolors
+colorscheme alabaster
 
 " Do not use visual mode on mouse marking text but use classic behaviour
 set mouse=v
