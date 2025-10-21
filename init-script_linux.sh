@@ -16,9 +16,9 @@ git config --global alias.tree "log --oneline --decorate --all --graph"
 
 # Install vim-plug and vimrc config file for neovim (nvim)
 mkdir -p ~/.config/nvim/venv
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-cp ./vimrc ~/.config/nvim/init.vim
+#sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+#       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+cp ./vimrc.lua ~/.config/nvim/init.lua
 python3 -m venv  ~/.config/nvim/venv
 source ~/.config/nvim/venv/bin/activate
 pip3 install -U pynvim neovim tomlkit platformdirs mccabe isort dill astroid pylint
@@ -28,7 +28,7 @@ deactivate
 cp ./tmux.conf "${HOME}/.tmux.conf"
 
 echo "Running neovim plugin/package installations..."
-nvim -c "source ./setup_neovim.vim" ./vimrc
+nvim -c "source ./setup_neovim.vim"
 echo "neovim plugin/package installation done."
 
 # Install user ruff config
