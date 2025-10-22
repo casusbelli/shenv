@@ -30,6 +30,7 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
   spec = {
     -- add your plugins here
+    'nvim-treesitter/nvim-treesitter',
     'tpope/vim-sensible',
     'morhetz/gruvbox',
     'tpope/vim-fugitive',
@@ -43,7 +44,44 @@ require("lazy").setup({
       'neoclide/coc.nvim',
       branch = 'release'
     },
-    'p00f/alabaster.nvim'
+    'p00f/alabaster.nvim',
+    {
+      "olimorris/codecompanion.nvim",
+      opts = {
+          strategies = {
+            chat = {
+                adapter = {
+                  name = "ollama",
+                  model = "devstral:latest",
+                  proxy = "http://127.0.0.1:11434",
+              },
+            },
+            inline = {
+                adapter = {
+                  name = "ollama",
+                  model = "devstral:latest",
+                  proxy = "http://127.0.0.1:11434",
+              },
+            },
+            command = {
+                adapter = {
+                  name = "ollama",
+                  model = "devstral:latest",
+                  proxy = "http://127.0.0.1:11434",
+              },
+            },
+          },
+          opts = {
+            log_level = "DEBUG",
+            enable_context = true,
+            enable_suggestions = true,
+            enable_commands = true,
+          },
+      },
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+      },
+    },
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
@@ -87,15 +125,11 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'ruby',
-  command = 'set softtabstop=2 tabstop=2 shiftwidth=2'
-})
-
-vim.api.nvim_create_autocmd('FileType', {
   pattern = 'go',
   command = 'set noexpandtab tabstop=4 shiftwidth=4'
 })
 
+-- TODO: Ensure this is installed in the shellscript
 -- Set go_fmt_command for vim-go
 vim.g.go_fmt_command = "goimports"
 
@@ -114,6 +148,7 @@ vim.api.nvim_create_autocmd('FileType', {
 -- Use Ag instead of Ack
 vim.g.ackprg = 'ag --nogroup --nocolor --column'
 
+-- TODO: ALE and coc will interfere, fix or move to one of them
 -- ALE configurations
 vim.g['ale_airline_enabled'] = 1
 vim.g.ale_fixers = { python = { 'isort', 'remove_trailing_lines', 'trim_whitespace' } }
@@ -129,10 +164,6 @@ vim.o.mouse = 'v'
 -- Background color
 vim.o.background = 'light'
 
--- Map leader key to space
-vim.g.mapleader = ' '
-
 -- Set <cr> as coc completion key
 vim.api.nvim_set_keymap('i', '<CR>', [[coc#pum#visible() ? coc#pum#confirm() : "<CR>"]], { expr = true, noremap = true })
-
 
