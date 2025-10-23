@@ -144,7 +144,7 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.g.ackprg = 'ag --nogroup --nocolor --column'
 
 -- Background color
-vim.o.background = "dark"
+vim.o.background = "light"
 
 -- Set colorscheme and terminal colors
 vim.o.termguicolors = true
