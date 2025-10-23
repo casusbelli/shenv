@@ -27,10 +27,6 @@ deactivate
 # Install tmux configuration
 cp ./tmux.conf "${HOME}/.tmux.conf"
 
-echo "Running neovim plugin/package installations..."
-nvim -c "source ./setup_neovim.vim"
-echo "neovim plugin/package installation done."
-
 # Install user ruff config
 mkdir -p ~/.config/ruff/
 cp ./pyproject.toml ~/.config/ruff/pyproject.toml

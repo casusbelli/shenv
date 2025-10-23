@@ -31,19 +31,17 @@ require("lazy").setup({
   spec = {
     -- add your plugins here
     'nvim-treesitter/nvim-treesitter',
-    'tpope/vim-sensible',
-    'morhetz/gruvbox',
-    'tpope/vim-fugitive',
-    'fatih/vim-go',
-    'plasticboy/vim-markdown',
-    'bronson/vim-trailing-whitespace',
-    'dense-analysis/ale',
-    'jvirtanen/vim-hcl',
-    'davidhalter/jedi-vim',
-    {
-      'neoclide/coc.nvim',
-      branch = 'release'
+    "neovim/nvim-lspconfig",
+    'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
+    { "williamboman/mason.nvim", config = true },
+    { "williamboman/mason-lspconfig.nvim",
+        opts = { ensure_installed = { "jdtls", "marksman", "pylsp" } }
     },
+    'bronson/vim-trailing-whitespace',
     'p00f/alabaster.nvim',
     {
       "olimorris/codecompanion.nvim",
@@ -83,9 +81,6 @@ require("lazy").setup({
       },
     },
   },
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
-  --install = { colorscheme = { "habamax" } },
   install = { colorscheme = { "alabaster" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
@@ -148,11 +143,8 @@ vim.api.nvim_create_autocmd('FileType', {
 -- Use Ag instead of Ack
 vim.g.ackprg = 'ag --nogroup --nocolor --column'
 
--- TODO: ALE and coc will interfere, fix or move to one of them
--- ALE configurations
-vim.g['ale_airline_enabled'] = 1
-vim.g.ale_fixers = { python = { 'isort', 'remove_trailing_lines', 'trim_whitespace' } }
-vim.g.ale_completion_enabled = 0
+-- Background color
+vim.o.background = "dark"
 
 -- Set colorscheme and terminal colors
 vim.o.termguicolors = true
@@ -161,9 +153,103 @@ vim.cmd('colorscheme alabaster')
 -- Mouse behavior
 vim.o.mouse = 'v'
 
--- Background color
-vim.o.background = 'light'
+-- ========== COMPLETION SETUP ==========
+local cmp = require("cmp")
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
+    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- confirm completion
+    ["<C-n>"] = cmp.mapping.select_next_item(),
+    ["<C-p>"] = cmp.mapping.select_prev_item(),
+  }),
+  sources = {
+    { name = "nvim_lsp" },
+    { name = "buffer" },
+    { name = "path" },
+  },
+})
 
--- Set <cr> as coc completion key
-vim.api.nvim_set_keymap('i', '<CR>', [[coc#pum#visible() ? coc#pum#confirm() : "<CR>"]], { expr = true, noremap = true })
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+-- ========== NATIVE LSP SETUP ==========
+-- Small helper for common root patterns
+local root_pattern = vim.fs.root(0, { ".git", "pyproject.toml", "setup.py" })
+
+-- Python (using pylsp)
+vim.lsp.start({
+  name = "pylsp",
+  cmd = { "pylsp" },
+  root_dir = root_pattern,
+  capabilities = capabilities,
+})
+
+-- Java (using jdtls)
+vim.lsp.start({
+  name = "jdtls",
+  cmd = { "jdtls" },
+  root_dir = vim.fs.root(0, { ".git", "pom.xml", "build.gradle" }),
+  capabilities = capabilities,
+})
+
+-- Markdown (using marksman)
+vim.lsp.start({
+  name = "marksman",
+  cmd = { "marksman", "server" },
+  root_dir = vim.fs.root(0, { ".git" }),
+  capabilities = capabilities,
+})
+
+-- ===== LSP AUTO-START + AUTO-INSTALL =====
+local mason_registry = require("mason-registry")
+
+-- Helper: ensure a tool is installed via Mason
+local function ensure_installed(pkg)
+  if not mason_registry.is_installed(pkg) then
+    local p = mason_registry.get_package(pkg)
+    p:install()
+  end
+end
+
+-- Helper: start an LSP if available
+local function start_lsp(config)
+  local root = vim.fs.root(0, config.root_patterns or { ".git" })
+  if root then
+    config.root_dir = root
+    vim.lsp.start(config)
+  end
+end
+
+-- Auto-start depending on filetype
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    local ft = args.match
+
+    if ft == "python" then
+      ensure_installed("python-lsp-server")
+      start_lsp({
+        name = "pylsp",
+        cmd = { "pylsp" },
+        capabilities = capabilities,
+        root_patterns = { ".git", "pyproject.toml", "setup.py" },
+      })
+
+    elseif ft == "java" then
+      ensure_installed("jdtls")
+      start_lsp({
+        name = "jdtls",
+        cmd = { "jdtls" },
+        capabilities = capabilities,
+        root_patterns = { ".git", "pom.xml", "build.gradle" },
+      })
+
+    elseif ft == "markdown" then
+      ensure_installed("marksman")
+      start_lsp({
+        name = "marksman",
+        cmd = { "marksman", "server" },
+        capabilities = capabilities,
+        root_patterns = { ".git" },
+      })
+    end
+  end,
+})
 
