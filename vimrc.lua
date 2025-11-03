@@ -85,6 +85,14 @@ require("lazy").setup({
             tag = '0.1.8',
             dependencies = { 'nvim-lua/plenary.nvim' }
         },
+        {
+            "NeogitOrg/neogit",
+            dependencies = {
+                "nvim-lua/plenary.nvim",
+                "sindrets/diffview.nvim",
+                "nvim-telescope/telescope.nvim",
+            },
+        },
     },
     install = { colorscheme = { "alabaster" } },
     -- automatically check for plugin updates
