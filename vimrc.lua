@@ -263,3 +263,9 @@ vim.api.nvim_create_autocmd("FileType", {
         end
     end,
 })
+
+-- finally enable diagnostics
+vim.diagnostic.enable = true
+vim.diagnostic.config({
+    virtual_lines = true,
+})
