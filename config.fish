@@ -34,7 +34,7 @@ function shellai
         echo "No prompt found."
     end
 
-    echo "Thinking..."  # User feedback
+    echo "Processing..."  # User feedback
 
     # Execute ollama. Ollama handles combining prompt args with stdin content.
     if test "$context_from_stdin" = true
