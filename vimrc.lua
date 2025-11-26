@@ -187,30 +187,6 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- Small helper for common root patterns
 local root_pattern = vim.fs.root(0, { ".git", "pyproject.toml", "setup.py" })
 
--- Python (using pylsp)
-vim.lsp.start({
-    name = "pylsp",
-    cmd = { "pylsp" },
-    root_dir = root_pattern,
-    capabilities = capabilities,
-})
-
--- Java (using jdtls)
-vim.lsp.start({
-    name = "jdtls",
-    cmd = { "jdtls" },
-    root_dir = vim.fs.root(0, { ".git", "pom.xml", "build.gradle" }),
-    capabilities = capabilities,
-})
-
--- Markdown (using marksman)
-vim.lsp.start({
-    name = "marksman",
-    cmd = { "marksman", "server" },
-    root_dir = vim.fs.root(0, { ".git" }),
-    capabilities = capabilities,
-})
-
 -- ===== LSP AUTO-START + AUTO-INSTALL =====
 local mason_registry = require("mason-registry")
 
