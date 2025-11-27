@@ -18,7 +18,7 @@ set -U -x EDITOR nvim
 
 function shellai
     # Based off https://notes.suhaib.in/docs/tech/how-to/how-to-build-a-personal-dev-copilot-with-ollama-+-tmux-+-bash/
-    set -l model "devstral"  # Default model. Change this to 'mistral', 'codellama', etc.
+    set -l model "gpt-oss:20b"  # Default model. Change this to 'mistral', 'codellama', etc.
     set -g prompt ""
     set -l context_from_stdin false
 
