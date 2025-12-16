@@ -51,21 +51,21 @@ require("lazy").setup({
                     chat = {
                         adapter = {
                             name = "ollama",
-                            model = "devstral:latest",
+                            model = "devstral-small-2:latest",
                             proxy = "http://127.0.0.1:11434",
                         },
                     },
                     inline = {
                         adapter = {
                             name = "ollama",
-                            model = "devstral:latest",
+                            model = "devstral-small-2:latest",
                             proxy = "http://127.0.0.1:11434",
                         },
                     },
                     command = {
                         adapter = {
                             name = "ollama",
-                            model = "devstral:latest",
+                            model = "devstral-small-2:latest",
                             proxy = "http://127.0.0.1:11434",
                         },
                     },
