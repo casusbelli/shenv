@@ -176,6 +176,10 @@ vim.cmd('colorscheme alabaster')
 -- Mouse behavior
 vim.o.mouse = 'v'
 
+-- Use esc instead of the the native neovim sequence for leaving edit mode in terminal
+-- (some remote terminals do not transfer ctrl+\)
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
+
 -- ========== COMPLETION SETUP ==========
 local cmp = require("cmp")
 cmp.setup({
