@@ -40,7 +40,13 @@ require("lazy").setup({
         { "williamboman/mason.nvim", config = true },
         {
             "williamboman/mason-lspconfig.nvim",
-            opts = { ensure_installed = { "jdtls", "marksman", "pylsp" } }
+            opts = { ensure_installed = {
+                "ansiblels",
+                "jdtls",
+                "marksman",
+                "pylsp",
+                "yamlls",
+            } }
         },
         'bronson/vim-trailing-whitespace',
         'p00f/alabaster.nvim',
@@ -221,6 +227,18 @@ local function start_lsp(config)
     end
 end
 
+-- Force Neovim to recognize Ansible-specific files
+vim.filetype.add({
+  extension = {
+    yml = function(path, bufnr)
+      if path:match("tasks") or path:match("roles") or path:match("playbook") then
+        return "yaml.ansible"
+      end
+      return "yaml"
+    end,
+  },
+})
+
 -- Auto-start depending on filetype
 vim.api.nvim_create_autocmd("FileType", {
     callback = function(args)
@@ -249,6 +267,39 @@ vim.api.nvim_create_autocmd("FileType", {
                 cmd = { "marksman", "server" },
                 capabilities = capabilities,
                 root_patterns = { ".git" },
+            })
+        elseif ft == "yaml" or ft == "yaml.ansible" then
+            -- 1. Install the Linter/Formatter via Mason (non-LSP tools)
+            ensure_installed("ansible-lint")
+            ensure_installed("yamllint")
+
+            -- 2. Start the Ansible LSP (The Brain)
+            start_lsp({
+                name = "ansiblels",
+                cmd = { "ansible-language-server", "--stdio" },
+                capabilities = capabilities,
+                root_patterns = { "ansible.cfg", ".ansible-lint", "playbooks", "roles" },
+                settings = {
+                    ansible = {
+                        ansible = { path = "ansible" },
+                        executionEnvironment = { enabled = false },
+                        validation = {
+                            enabled = true,
+                            lint = { enabled = true, path = "ansible-lint" },
+                        },
+                    },
+                },
+            })
+            -- 3. Start the YAML LSP (The Syntax Police)
+            start_lsp({
+                name = "yamlls",
+                cmd = { "yaml-language-server", "--stdio" },
+                capabilities = capabilities,
+                settings = {
+                    yaml = {
+                        schemaStore = { enable = true },
+                    },
+                },
             })
         end
     end,
