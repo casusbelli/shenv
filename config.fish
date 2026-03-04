@@ -48,6 +48,6 @@ function shellai
             echo "Or: cat file.py | shellai \"Explain this code\""
             return 1
         end
-        ollama run $model $prompt
+        ollama run $model $prompt | less
     end
 end
