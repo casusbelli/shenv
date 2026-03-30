@@ -52,6 +52,7 @@ require("lazy").setup({
         'p00f/alabaster.nvim',
         {
             "olimorris/codecompanion.nvim",
+            version = "*",
             opts = {
                 strategies = {
                     chat = {
