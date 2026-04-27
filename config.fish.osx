@@ -35,7 +35,7 @@ function shellai
     if test "$context_from_stdin" = true
         # When stdin is present, ollama reads from it directly.
         # The prompt arguments are passed as the user's specific query.
-        ollama run $model $prompt
+        ollama run $model $prompt --hidethinking
     else
         # No stdin, just run with the prompt
         if test -z "$prompt"
@@ -43,6 +43,6 @@ function shellai
             echo "Or: cat file.py | shellai \"Explain this code\""
             return 1
         end
-        ollama run $model $prompt | less
+        ollama run $model $prompt --hidethinking | less
     end
 end
