@@ -1,20 +1,28 @@
 # fish shell config file
 
-alias vim='~/.local/bin/nvim'
-alias rm='/usr/bin/rm -i'
-alias open='gio open'
-alias k8s='/usr/bin/kubectl'
 alias ll='ls -lash'
 alias gitpowerpull='git pull --all --tags --force; and git submodule sync ; and git submodule update --init --recursive'
 
-if test -z (pgrep -x ssh-agent|tr -d '[:space:]')
-    eval (ssh-agent -c)
-    set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
-    set -Ux SSH_AGENT_PID $SSH_AGENT_PID
-end
-
 set -U -x GIT_EDITOR nvim
 set -U -x EDITOR nvim
+
+if test (uname) = Darwin
+    alias vim='/opt/homebrew/bin/nvim'
+    alias rm='/bin/rm -i'
+    fish_add_path /opt/homebrew/bin
+    fish_add_path ~/Applications
+else
+    alias vim='~/.local/bin/nvim'
+    alias rm='/usr/bin/rm -i'
+    alias open='gio open'
+    alias k8s='/usr/bin/kubectl'
+
+    if test -z (pgrep -x ssh-agent|tr -d '[:space:]')
+        eval (ssh-agent -c)
+        set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+        set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+    end
+end
 
 function shellai
     # Based off https://notes.suhaib.in/docs/tech/how-to/how-to-build-a-personal-dev-copilot-with-ollama-+-tmux-+-bash/
