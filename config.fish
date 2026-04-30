@@ -23,8 +23,8 @@ function shellai
     set -l context_from_stdin false
 
     # Check if we're receiving input via a pipe
-    if test (count (commandline -op)) -gt 0
-        set -g context_from_stdin true
+    if not test -t 0
+        set -l context_from_stdin true
     end
 
     # If prompt is provided as arguments, use it
