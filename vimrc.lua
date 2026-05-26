@@ -306,6 +306,14 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+-- Enable persistent history on ~/tasks.md
+vim.api.nvim_create_autocmd({"BufReadPre", "BufNewFile"}, {
+  pattern = vim.fn.expand("~/tasks.md"),
+  callback = function()
+    vim.opt_local.undofile = true
+  end,
+})
+
 -- finally enable diagnostics
 vim.diagnostic.enable = true
 vim.diagnostic.config({
