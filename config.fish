@@ -32,7 +32,7 @@ function shellai
 
     # Check if we're receiving input via a pipe
     if not test -t 0
-        set -l context_from_stdin true
+        set context_from_stdin true
     end
 
     # If prompt is provided as arguments, use it
