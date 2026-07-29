@@ -15,6 +15,9 @@ sed -i '' 's/^vim\.o\.background = \"dark\"/vim.o.background = \"light\"/g' ~/.c
 # OS X path for fish differs from linux
 sed -i '' 's/\/usr\/local\/bin\/fish/\/opt\/homebrew\/bin\/fish/g' ~/.tmux.conf
 
+# replace gpt 2 with gwen on OS X host for shellai
+sed -i '' 's/gpt-oss:20b/qwen3.6:35b/g' ~/.config/fish/config.fish
+
 # Report we're done here
 echo "OS X specific adaptions done."
 
