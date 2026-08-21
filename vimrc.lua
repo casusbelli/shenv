@@ -30,16 +30,17 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
     spec = {
         -- add your plugins here
-        'nvim-treesitter/nvim-treesitter',
-        "neovim/nvim-lspconfig",
-        'hrsh7th/nvim-cmp',
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-cmdline',
-        { "williamboman/mason.nvim", config = true },
+        'nvim-treesitter/nvim-treesitter', -- tags abandoned since the rewrite, track main
+        { "neovim/nvim-lspconfig", version = "*" },
+        'hrsh7th/nvim-cmp', -- tags stale for 18+ months, track main
+        'hrsh7th/cmp-nvim-lsp', -- no tagged releases upstream
+        'hrsh7th/cmp-buffer', -- no tagged releases upstream
+        'hrsh7th/cmp-path', -- no tagged releases upstream
+        'hrsh7th/cmp-cmdline', -- no tagged releases upstream
+        { "williamboman/mason.nvim", version = "*", config = true },
         {
             "williamboman/mason-lspconfig.nvim",
+            version = "*",
             opts = { ensure_installed = {
                 "ansiblels",
                 "jdtls",
@@ -48,8 +49,8 @@ require("lazy").setup({
                 "yamlls",
             } }
         },
-        'bronson/vim-trailing-whitespace',
-        'p00f/alabaster.nvim',
+        'bronson/vim-trailing-whitespace', -- only tag is from 2010, track main
+        'p00f/alabaster.nvim', -- no tagged releases upstream
         {
             "olimorris/codecompanion.nvim",
             version = "*",
@@ -58,21 +59,21 @@ require("lazy").setup({
                     chat = {
                         adapter = {
                             name = "ollama",
-                            model = "devstral-small-2:latest",
+                            model = "qwen3.8:27b",
                             proxy = "http://127.0.0.1:11434",
                         },
                     },
                     inline = {
                         adapter = {
                             name = "ollama",
-                            model = "devstral-small-2:latest",
+                            model = "qwen3.8:27b",
                             proxy = "http://127.0.0.1:11434",
                         },
                     },
                     command = {
                         adapter = {
                             name = "ollama",
-                            model = "devstral-small-2:latest",
+                            model = "qwen3.8:27b",
                             proxy = "http://127.0.0.1:11434",
                         },
                     },
@@ -94,6 +95,7 @@ require("lazy").setup({
         },
         {
             "NeogitOrg/neogit",
+            version = "*",
             dependencies = {
                 "nvim-lua/plenary.nvim",
                 "sindrets/diffview.nvim",
@@ -101,7 +103,7 @@ require("lazy").setup({
             },
         },
         {
-            "f-person/git-blame.nvim",
+            "f-person/git-blame.nvim", -- no tagged releases upstream
             event = "BufReadPre",
             opts = {
                 enabled = true,

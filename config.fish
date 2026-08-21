@@ -26,7 +26,7 @@ end
 
 function shellai
     # Based off https://notes.suhaib.in/docs/tech/how-to/how-to-build-a-personal-dev-copilot-with-ollama-+-tmux-+-bash/
-    set -l model "gpt-oss:20b"  # Default model. Change this to 'mistral', 'codellama', etc.
+    set -l model "qwen3.8:27b"  # Default model. Change this to 'mistral', 'codellama', etc.
     set -g prompt ""
     set -l context_from_stdin false
 
