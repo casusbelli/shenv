@@ -31,7 +31,7 @@ set -g bell-action none
 #bind C-a send-prefix
 
 # Turn the mouse on, but without copy mode dragging
-set -g mouse on
+#set -g mouse on
 unbind -n MouseDrag1Pane
 unbind -Tcopy-mode MouseDrag1Pane
 
