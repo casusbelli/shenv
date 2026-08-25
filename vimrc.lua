@@ -30,7 +30,20 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
     spec = {
         -- add your plugins here
-        'nvim-treesitter/nvim-treesitter', -- tags abandoned since the rewrite, track main
+        { -- tags abandoned since the rewrite, track main
+            'nvim-treesitter/nvim-treesitter',
+            build = ":TSUpdate", -- keep parsers up to date on plugin update
+            opts = {
+                -- parsers installed automatically; missing ones installed on startup
+                ensure_installed = {
+                    "markdown",
+                    "markdown_inline",
+                    "yaml",
+                    "lua", -- recommended, many core features use it
+                },
+                highlight = { enable = true },
+            },
+        },
         { "neovim/nvim-lspconfig", version = "*" },
         'hrsh7th/nvim-cmp', -- tags stale for 18+ months, track main
         'hrsh7th/cmp-nvim-lsp', -- no tagged releases upstream
