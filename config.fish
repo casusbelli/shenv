@@ -38,8 +38,6 @@ function shellai
     # If prompt is provided as arguments, use it
     if test (count $argv) -gt 0
         set -g prompt (string join " " $argv)
-    else
-        echo "No prompt found."
     end
 
     echo "Processing..."  # User feedback
@@ -56,6 +54,6 @@ function shellai
             echo "Or: cat file.py | shellai \"Explain this code\""
             return 1
         end
-        ollama run $model $prompt --hidethinking | less
+        ollama run $model $prompt --hidethinking --nowordwrap | less -R
     end
 end
