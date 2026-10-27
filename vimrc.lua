@@ -1,3 +1,11 @@
+-- codecompanion.nvim v20+ requires nvim 0.12
+if vim.fn.has("nvim-0.12") == 0 then
+    vim.api.nvim_echo({
+        { "This config requires Neovim 0.12+, found " .. tostring(vim.version()) .. "\n", "ErrorMsg" },
+    }, true, {})
+    return
+end
+
 -- Ensure pynvim is set up correctly
 vim.g.python3_host_prog = '~/.config/nvim/venv/bin/python3'
 
