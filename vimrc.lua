@@ -76,7 +76,7 @@ require("lazy").setup({
             "olimorris/codecompanion.nvim",
             version = "*",
             opts = {
-                strategies = {
+                interactions = {
                     chat = {
                         adapter = {
                             name = "ollama",
@@ -96,6 +96,17 @@ require("lazy").setup({
                             name = "ollama",
                             model = "qwen3.8:27b",
                             proxy = "http://127.0.0.1:11434",
+                        },
+                    },
+                    cli = {
+                        agent = "claude_code",
+                        agents = {
+                            claude_code = {
+                                cmd = "claude",
+                                args = {},
+                                description = "Claude Code CLI",
+                                provider = "terminal",
+                            },
                         },
                     },
                 },
@@ -209,6 +220,20 @@ vim.o.mouse = 'v'
 -- Use esc instead of the the native neovim sequence for leaving edit mode in terminal
 -- (some remote terminals do not transfer ctrl+\)
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
+
+-- CodeCompanion CLI agent (Claude Code)
+vim.keymap.set({ "n", "v" }, "<LocalLeader>cp", function()
+    return require("codecompanion").cli({ prompt = true })
+end, { desc = "Prompt the CLI agent" })
+vim.keymap.set({ "n", "v" }, "<LocalLeader>ca", function()
+    return require("codecompanion").cli("#{this}", { focus = false })
+end, { desc = "Add context to the CLI agent" })
+vim.keymap.set("n", "<LocalLeader>cd", function()
+    return require("codecompanion").cli("#{diagnostics} Can you fix these?", { focus = false, submit = true })
+end, { desc = "Send diagnostics to CLI agent" })
+vim.keymap.set("n", "<LocalLeader>ct", function()
+    return require("codecompanion").cli("#{terminal} Sharing the output from the terminal. Can you fix it?", { focus = false, submit = true })
+end, { desc = "Send terminal output to CLI agent" })
 
 -- ========== COMPLETION SETUP ==========
 local cmp = require("cmp")
